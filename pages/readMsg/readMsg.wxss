@@ -1,0 +1,13 @@
+.message .weui-cells{
+    margin: 1.17647059em 15px .3em;
+    border-radius: 5px;
+}
+.message .weui-cell{
+    padding:10px 15px;
+}
+.message .weui-cells::before{
+    display: none;
+}
+.message .weui-cells::after{
+    display: none;
+}

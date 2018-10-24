@@ -1,0 +1,8 @@
+<view>
+    <view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__links">
+        <button class="weui-footer__link" open-type="contact">联系我们</button>
+    </view>
+    <view class="weui-footer__text">Copyright © 三林吴彦祖&&棒棒</view>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+.container.charts {
+  padding: 0;
+  background: #fff;
+}
+.container.charts:last-child {
+  margin-bottom: 50px;
+}
+.chart-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}

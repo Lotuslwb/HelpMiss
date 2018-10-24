@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/sendMsg/sendMsg",
+    "pages/readMsg/readMsg",
+    "pages/result/result_success"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "偷偷告诉你  say something",
+    "navigationBarTextStyle": "black"
+  }
+}

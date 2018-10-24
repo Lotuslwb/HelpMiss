@@ -1,0 +1,16 @@
+.procuctlist {
+  border: #d9d9d9 1px solid;
+  margin: 5px 0;
+  padding: 5px 0 5px 15px;
+  height: 150px;
+  box-sizing: border-box;
+}
+
+.total {
+  height: 65px;
+}
+
+.total-right {
+  float: right;
+  width: 90%;
+}

@@ -1,0 +1,36 @@
+<view class="page">
+    <view class="weui-cells__title">想说的话</view>
+    <view class="weui-cells weui-cells_form">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入文本" rows="3" bindinput="handleMsg" value="{{initData}}"></textarea>
+            <view class="weui-textarea-counter" style="color:{{countColor}}">
+                <span>{{initCount}}</span>
+                /{{maxCount}}
+            </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">收件人</view>
+    <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd" style="width: 105px">
+                    <picker bindchange="bindCountryCodeChange" value="{{countryCodeIndex}}" range="{{countryCodes}}">
+                        <view class="weui-select">{{countryCodes[countryCodeIndex]}}</view>
+                    </picker>
+                </view>
+                <view class="weui-cell__bd weui-cell__bd_in-select-before">
+                    <input class="weui-input" placeholder="请输入号码" bindinput="getPhone" />
+                </view>
+            </view>
+    </view>
+    <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="getResult">确定发送</button>
+    </view>
+
+    <view class="weui-msg__extra-area">
+        <footer/>
+    </view>
+
+
+</view>

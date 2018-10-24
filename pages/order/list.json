@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "订单列表",
+  "usingComponents": {
+    "footer": "/pages/components/footerNav/footerNav",
+    "table": "/pages/components/table/table",
+    "searchBox": "/pages/components/searchBox/searchBox",
+    "msgbox": "/pages/components/msgbox/msgbox",
+    "productlist": "/pages/components/productList/productList"
+  }
+}

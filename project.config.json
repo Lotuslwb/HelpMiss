@@ -1,0 +1,118 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.1.0",
+	"appid": "wxd5f221a504c0dd6b",
+	"projectname": "%E5%B8%AE%E8%B5%B0%E5%A4%B1",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": -1,
+					"name": "admin",
+					"pathName": "pages/admin/index/index",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "orderlist",
+					"pathName": "pages/order/list",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "productlist",
+					"pathName": "pages/product/list",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "boxlist",
+					"pathName": "pages/store/boxlist",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "storelist",
+					"pathName": "pages/store/list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order/list",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "orderStatistic",
+					"pathName": "pages/order/chart",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "productStatistic",
+					"pathName": "pages/product/chart",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "operation",
+					"pathName": "pages/operation/list",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "apply",
+					"pathName": "pages/apply/index",
+					"query": "type=&&mch_id=2&store_id=2&roleType=99"
+				},
+				{
+					"id": -1,
+					"name": "person",
+					"pathName": "pages/store/person",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "form",
+					"pathName": "pages/operator/index/form",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "apply",
+					"pathName": "pages/apply/index",
+					"query": "type=&&mch_id=2&store_id=2&roleType=99"
+				}
+			]
+		}
+	}
+}

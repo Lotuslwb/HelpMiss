@@ -1,0 +1,12 @@
+@import '/style/weui.wxss';
+
+
+.weui-footer__link{
+    border:none;
+    background: none;
+    outline: none;
+}
+
+.weui-footer__link::after {
+    border: none
+  }
