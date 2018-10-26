@@ -1,132 +1,143 @@
-<!--index.wxml-->
-<!-- <view class="index-page">
-</view> -->
 
 <view class="add">
   
     <view class="add-panel">
-         <view class="weui-cells__title">请填写走失信息</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">标题</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入标题"/>
-                </view>
-            </view>
-            <!-- 分类 -->
-            <view class="weui-cell weui-cell_select">
-                <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">分类</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <picker bindchange="bindCategoryChange" value="{{categoryIndex}}" range="{{categories}}">
-                        <view class="weui-select weui-select_in-select-after">{{categories[categoryIndex]}}</view>
-                    </picker>
-                </view>
-            </view>
-     
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">走失日期</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                        <view class="weui-input">{{date}}</view>
-                    </picker>
-                </view>
-            </view>
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">走失时间</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-                        <view class="weui-input">{{time}}</view>
-                    </picker>
-                </view>
-            </view>
-        </view>
-
-        <view class="weui-cells__title">简介</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入文本" />
-                </view>
-            </view>
-        </view>
-
-        <view class="weui-cells__title">详情描述</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
-                    <view class="weui-textarea-counter">0/500</view>
-                </view>
-            </view>
-        </view>
-
-        <view class="weui-cells__title">走失地点</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_select">
-                <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">国家/地区</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
-                        <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
-                    </picker>
-                </view>
-            </view>
-        </view>
-        <!-- 上传图片 -->
-       
-            <view class="weui-cells__title">图片上传</view>
-             <view class="weui-cells weui-cells_after-title">
-              <view class="weui-cell">
-             <view class="weui-cell__bd">
-                <view class="weui-uploader">
-                
-                    <view class="weui-uploader__hd">
-                        <view class="weui-uploader__title "> 上传</view>
-                        <view class="weui-uploader__info">{{uploadImages.length}}/{{maxImageNum}}</view>
-                    </view> 
-                    <view class="weui-uploader__bd ">
-                        <view class="weui-uploader__files" id="uploaderFiles">
-                            <block wx:for="{{uploadImages}}" wx:key="*this">
-                                <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
-                                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
-                                </view>
-                            </block>
-                        </view>
-                        <view class="weui-uploader__input-box">
-                            <view class="weui-uploader__input" bindtap="chooseImage"></view>
-                        </view>
-                    </view>
-                </view>
-                </view>
-                </view>
-                </view>
+        <form  bindsubmit="publish" bindreset="formReset">
+            <view class="weui-cells__title">请填写走失对象信息</view>
         
+            <view class="weui-cells weui-cells_after-title">
 
-          <checkbox-group bindchange="bindAgreeChange">
-            <label class="weui-agree" for="weuiAgree">
-                <view class="weui-agree__text">
-                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
-                    <view class="weui-agree__checkbox-icon">
-                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                <!-- 分类 -->
+                <view class="weui-cell weui-cell_select">
+                    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                        <view class="weui-label">分类</view>
                     </view>
-                    阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
+                    <view class="weui-cell__bd">
+                        <picker name="helpType" bindchange="bindCategoryChange" value="{{categoryIndex}}" range="{{categories}}">
+                            <view class="weui-select weui-select_in-select-after">{{categories[categoryIndex]}}</view>
+                        </picker>
+                    </view>
                 </view>
-            </label>
-        </checkbox-group>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">{{nameLabel[categoryIndex]}}</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input name="missName" class="weui-input" placeholder="请输入走失对象{{nameLabel[categoryIndex]}}"/>
+                    </view>
+                </view>
 
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="publish">发布</button>
-        </view>
+               
+                <view class="weui-cell weui-cell_switch">
+                    <view class="weui-cell__bd">性别</view>
+                    <view class="weui-cell__ft">
+                        {{sexArr[categoryIndex][0]}}<switch name="missSex" checked />{{sexArr[categoryIndex][1]}}
+                    </view>
+                </view>
+                
+        
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">走失日期</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <picker name="missTime" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                            <view class="weui-input">{{date}}</view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
 
+            <view class="weui-cells__title">详情描述</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <textarea name="missDetailText" maxlength="{{maxText}}" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+                        <view class="weui-textarea-counter" style="color:{{counterColor[missDetailText.length >= maxText]}}" >{{missDetailText.length}}/{{maxText}}</view>
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cells__title">走失地点</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-panel__ft"> 
+                    <view bindtap="choosePosition" class="weui-cell weui-cell_access weui-cell_link">
+                        <view class="weui-cell__bd">获取具体位置</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_select">
+                    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                        <view class="weui-label">地区</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <picker  mode="region" bindchange="bindCountryChange" >
+                            <view class="weui-select weui-select_in-select-after">{{country}}</view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">详细地址</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input name="missAddressText" class="weui-input" placeholder="请输入详细地址" value="{{missAddressText}}"/>
+                    </view>
+                </view>
+            </view>
+            <!-- 上传图片 -->
+            <view class="weui-cells__title">图片上传</view>
+                <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                    
+                        <view class="weui-uploader__hd">
+                            <view class="weui-uploader__title "> 上传</view>
+                            <view class="weui-uploader__info" style="color:{{counterColor[uploadImages.length >= maxImageNum]}}">{{uploadImages.length}}/{{maxImageNum}}</view>
+                        </view> 
+                        <view class="weui-uploader__bd ">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{uploadImages}}" wx:key="*this">
+                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                    </view>
+                                </block>
+                            </view>
+                            <view class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                </view>
+            </view>
+
+            <view class="weui-cells__title">联系人信息</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">联系人</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input name="contactName" class="weui-input" placeholder="请输入联系人姓名"/>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">联系电话</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input name="contactTel" class="weui-input" placeholder="请输入联系电话"/>
+                    </view>
+                </view>
+            </view>
+            
+
+            <view class="weui-btn-area">
+                <button formType="submit" class="weui-btn" type="primary">发布</button>
+            </view>
+        </form>
     </view>
     <!--底部-->
     <footer/>

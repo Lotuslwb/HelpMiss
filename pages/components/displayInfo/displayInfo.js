@@ -50,7 +50,7 @@ Component({
           this.setData({
             infos: res.data
           })
-          
+      
           // 保存数据
           res.data.forEach(info => {
             app.globalData.lostInfos[info._id] = info

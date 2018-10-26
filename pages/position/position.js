@@ -26,14 +26,14 @@ Page({
     drawPolygon: false,
   },
   onLoad: function (options) {
-    console.log('i>>>>'+ options.address)
+    // console.log('i>>>>'+ options.address)
     var address = options.address.split(',')
-    console.log(address)
-    console.log(address[0].slice(1))
-    console.log(address[1].slice(0,address[1].length-1))
+    // console.log(address)
+    // console.log(address[0].slice(1))
+    // console.log(address[1].slice(0,address[1].length-1))
     this.setData({
-      longitude: parseInt(address[0].slice(1)),
-      latitude: parseInt(address[1].slice(0,address[1].length-1))
+      longitude: parseInt(address[0]),
+      latitude: parseInt(address[1])
     })
     // latitude
   },

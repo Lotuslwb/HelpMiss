@@ -1,7 +1,8 @@
 <view class="findInfo">
         
     <view class="weui-panel__bd">
-        <navigator url="/pages/detail/detail?id={{infoId}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+       <navigator url="/pages/detail/detail?id={{infoId}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"> 
+       <!-- <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"> -->
             <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                 <image class="weui-media-box__thumb" src="{{imagePath||''}}" />
             </view>
@@ -13,13 +14,13 @@
                 </view>
             <view class="weui-media-box__desc">{{preview||noData}}</view>
             <view class="weui-media-box__info">
-                <view class="weui-media-box__info__meta">丢失于 {{ address || noData }}</view>
+                <view class="weui-media-box__info__meta one-line">丢失于 {{ address || noData }}</view>
             </view>
             <view class="weui-media-box__info">
-                <view class="weui-media-box__info__meta">{{publisher||noData}}</view>
-                <view class="weui-media-box__info__meta"><text space="nbsp">发布于  {{ publishTime || noData }} </text></view>
+                <view class="weui-media-box__info__meta"><text space="nbsp">{{publisher|| noData}}  发布于  {{ publishTime || noData }} </text></view>
             </view>
             </view>
+        <!-- </view> -->
         </navigator>
     </view>
 

@@ -19,13 +19,16 @@ Component({
   },
 
   ready:function(){
-    // console.log('>>>>')
-    // console.log(this.data)
-    // console.log('>>>>')
+    console.log('>>>>')
+    console.log(this.data)
+    console.log('>>>>')
+
     let formateTime = this.formatDateTime(parseInt(this.data.publishTime))
     this.setData({
       publishTime: formateTime,
+      imagePath: this.data.imagePath.split(',')[0]
     })
+ 
     if(this.data.helpType){
       this.setData({
         category: app.globalData.helpType[this.data.helpType]

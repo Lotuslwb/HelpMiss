@@ -4,6 +4,7 @@ const app = getApp();
 
 Page({
   data: {
+    pictures:[],
     // createTime: '',
     // missTime: "'2018-09-10'",
     // missName: "'我家狗狗'",
@@ -18,13 +19,19 @@ Page({
     // helpType:'',
   },
   onLoad: function (option) {
-    //获取寻找信息的id
+    
     this.setData({
-      id: option.id||' '
+      id: option.id||' ',
     })
+    //获取寻找信息的id
     var info = this.findInfoById(option.id);
     if(info && typeof info === 'object'){
       // 设置数据
+      let picStr = info.picUrls[0];
+      info.picUrls = picStr && picStr.split(',')
+      console.log(
+        info.picUrls
+      )
       this.setData(info)
           console.log('>>>>')
           console.log(this.data)
@@ -38,6 +45,13 @@ Page({
   },
   onShow: function () {
  
+  },
+  openMap: function() {
+    let address = this.data.missAddress && this.data.missAddress.split(',')
+    app.WxService.openLocation({
+      longitude: parseFloat(address[0]),
+      latitude: parseFloat(address[1]),
+    })
   },
   onShareAppMessage:function(res){
     return {

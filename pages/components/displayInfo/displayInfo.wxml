@@ -5,11 +5,11 @@
 <view class="display-info">
         <view class="title">{{title[queryType]}}</view>
         <block wx:for="{{infos}}" wx:key="{{item._id}}">
-            <findInfo info-id = "{{item._id}}" 
+            <findInfo info-id = "{{item._id}}" id = "{{item._id}}" 
                     title = "{{item.missName+' '+ item.missSex}}" 
                     publisher = "{{item.contactName}}"
                     publish-time = "{{item.createTime}}" 
-                    image-path = "{{ item.picUrls && item.picUrls.length!=0 && item.picUrls[0] || ''}}"
+                    image-path = "{{item.picUrls && item.picUrls.length!=0 && item.picUrls[0] || ''}}"
                     preview = "{{item.missDetailText}}"
                     phone = "{{item.contactTel}}"
                     help-type = "{{item.helpType}}"

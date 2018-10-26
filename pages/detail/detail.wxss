@@ -25,10 +25,10 @@
     -webkit-box-orient:vertical;
     padding:0px 15px 15px;
 }
-.detail .navi-hover{
-    color: black;
-}
 
 .detail .detail-text-title{
     padding-left: 15px;
+}
+.detail .weui-cell__ft{
+    width: 250px;
 }

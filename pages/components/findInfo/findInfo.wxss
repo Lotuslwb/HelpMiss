@@ -12,12 +12,6 @@
     margin-top: 10rpx;
     float: right;
 }
-.findInfo .weui-media-box__info__meta{
-    overflow:hidden;
-    text-overflow:ellipsis;
-    -webkit-line-clamp:1;
-    white-space:nowrap;
-}
 
 
 
