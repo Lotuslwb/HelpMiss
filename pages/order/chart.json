@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "订单统计",
-  "usingComponents": {
-    "footer": "/pages/components/footerNav/footerNav",
-    "searchBox": "/pages/components/searchBox/searchBox"
-  }
-}

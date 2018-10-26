@@ -10,7 +10,6 @@ App({
     this.login();
   },
   onShow() {
-    console.log('ApponShow');
   },
   onHide() {
 
@@ -18,11 +17,13 @@ App({
   login() {
     return this.WxService.login()
       .then(data => {
+        console.log(data.code)
         return this.HttpService.onLogin({
           code: data.code
         })
       }).then(res => {
         var openid = res.data.openid;
+        // console.log('openid'+openid)
         return this.WxService.setStorage({
           key: "openid",
           data: openid
@@ -36,6 +37,8 @@ App({
   },
   globalData: {
     userInfo: null,
+    lostInfos: [],
+    helpType: []
   },
   renderImage(path) {
     if (!path) return ''

@@ -1,14 +1,40 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/sendMsg/sendMsg",
-    "pages/readMsg/readMsg",
-    "pages/result/result_success"
+    "pages/home/home",
+    "pages/myinfo/myinfo",
+    "pages/add/add",
+    "pages/detail/detail",
+    "pages/mypublish/mypublish",
+    "pages/position/position"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "偷偷告诉你  say something",
+    "navigationBarTitleText": "帮走失",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar":{
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "img/icon-home.png",
+        "selectedIconPath": "img/icon-home-fill.png"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "iconPath": "img/icon-add.png",
+        "selectedIconPath": "img/icon-add.png"
+        
+      },
+      {
+        "pagePath": "pages/myinfo/myinfo",
+        "iconPath": "img/icon-myinfo.png",
+        "selectedIconPath": "img/icon-myinfo-fill.png"
+      }
+    ]
   }
 }

@@ -1,0 +1,11 @@
+@import '/style/weui.wxss';
+
+.display-info{
+    margin:20rpx;
+}
+
+.display-info .title{
+    margin-top: 50rpx;
+    text-align: center;
+    color: #3cc51f;
+}

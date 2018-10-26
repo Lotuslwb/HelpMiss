@@ -5,10 +5,11 @@ class HttpService extends WxRequest {
 		super(options)
 		this.$$prefix = ''
 		this.$$path = {
-			getList: 'type/3/getList',
-			onLogin: 'talkto/onLogin',
-			querySMS:'talkto/querySMS',
-			createSMS:'talkto/createSMS',
+			onLogin: '/helpmiss/onLogin',
+			publish: '/helpmiss/createHelp',
+			queryHelpList: '/helpmiss/queryHelpList',
+			queryHelpType: '/helpmiss/queryHelpType',
+			upload: '/helpmiss/upload',
 		}
 		this.interceptors.use({
 			request(request) {
@@ -58,27 +59,35 @@ class HttpService extends WxRequest {
 		})
 	}
 
-
+	// 登录
 	onLogin(params) {
 		return this.postRequest(this.$$path.onLogin, {
 			data: params,
 		})
 	}
-	getList(params) {
-		return this.getRequest(this.$$path.getList, {
+	// 发布走失信息
+	publish(params){
+		return this.postRequest(this.$$path.publish, {
 			data: params,
 		})
 	}
-	querySMS(params) {
-		return this.postRequest(this.$$path.querySMS, {
+	// 查询走失信息
+	queryHelpList(params){
+		return this.postRequest(this.$$path.queryHelpList, {
 			data: params,
 		})
 	}
-	createSMS(params) {
-		return this.postRequest(this.$$path.createSMS, {
+	// 查询分类目录
+	queryHelpType(){
+		return this.getRequest(this.$$path.queryHelpType)
+	}
+	// 上传图片
+	upload(){
+		return this.postRequest(this.$$path.upload, {
 			data: params,
 		})
 	}
+
 }
 
 export default HttpService

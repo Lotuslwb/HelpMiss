@@ -1,0 +1,23 @@
+@import '/style/weui.wxss';
+
+.findInfo{
+    border: 1px solid #d3d3d3;
+    box-shadow: 1px 1px 10px #d3d3d3;
+    background-color: white;
+    margin: 40rpx 20rpx;
+    border-radius: 10rpx;
+}
+
+.category{
+    margin-top: 10rpx;
+    float: right;
+}
+.findInfo .weui-media-box__info__meta{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:1;
+    white-space:nowrap;
+}
+
+
+

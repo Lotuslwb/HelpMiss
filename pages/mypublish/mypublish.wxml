@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<!-- <view class="index-page">
+</view> -->
+
+<view class="mypublish">
+     <displayInfo queryType="{{queryType}}" />
+    <!--底部-->
+    <footer/>
+</view>

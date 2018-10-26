@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<!-- <view class="index-page">
+</view> -->
+
+<view class="home">
+    <displayInfo queryType="{{queryType}}" />
+    <!--底部-->
+   
+    <footer/>
+</view>

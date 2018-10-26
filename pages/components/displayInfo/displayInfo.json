@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "footer": "/pages/components/footer/footer",
+    "findInfo": "/pages/components/findInfo/findInfo"
+  }
+}
