@@ -2,6 +2,8 @@ const app = getApp();
 Component({
   data:{
     noData:"未知",
+    defaultImg: '/img/icon-myinfo.png',
+    img:'',
     category:'',
   },
   properties: {
@@ -26,7 +28,7 @@ Component({
     let formateTime = this.formatDateTime(parseInt(this.data.publishTime))
     this.setData({
       publishTime: formateTime,
-      imagePath: this.data.imagePath.split(',')[0]
+      img: this.data.imagePath.split(',')[0]
     })
  
     if(this.data.helpType){

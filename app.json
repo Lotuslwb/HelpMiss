@@ -4,8 +4,7 @@
     "pages/myinfo/myinfo",
     "pages/add/add",
     "pages/detail/detail",
-    "pages/mypublish/mypublish",
-    "pages/position/position"
+    "pages/mypublish/mypublish"
   ],
   "window": {
     "backgroundTextStyle": "light",

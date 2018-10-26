@@ -7,15 +7,15 @@ Page({
     categoryIndex: 0,
     categories:[],
     sexArr:[['男','女'],['公','母']],
-    nameLabel: ['名称','姓名'],
+    nameLabel: ['姓名','名称'],
     uploadImages: [],
     picUrls:[],
     maxImageNum:  9,  
-    maxText: 500,
+    maxText: 200,
     missAddress: '',
     missAddressText: '',
     missDetailText: '',
-    counterColor:{ false:'#b2b2b2', true:'red' }
+    counterColor:{ false:'#b2b2b2', true:'red' },
   },
   onLoad: function () {
      // 获取走失类型
@@ -55,6 +55,11 @@ Page({
     this.setData({
       country: e.detail.value,
       missAddressText: e.detail.value.join(''),
+    })
+  },
+  onDetailInput(e){
+    this.setData({
+      missDetailText : e.detail.value,
     })
   },
 
@@ -127,6 +132,15 @@ Page({
     
     const { picUrls , missAddress , sexArr , categoryIndex } = this.data
     if(e.detail.value){
+      const form = {
+          picUrls,
+          missAddress,
+          ...e.detail.value
+      }
+      const validators = this.validator();
+      //验证必需项是否为空
+      if( !this.validateNoEmpty(form , validators)) return;
+      var that = this;
       app.WxService.getStorage({key:'openid'})
         .then((res)=>{
           return res.data
@@ -134,11 +148,8 @@ Page({
         .then((openId) => {
           let data = {
             openId,
-            picUrls,
-            missAddress,
-            ...e.detail.value
+            ...form
           }  
-          data.missSex = sexArr[categoryIndex][data.missSex + 0]
           console.log(data);
           app.HttpService.publish(data).then(
             res => {
@@ -149,14 +160,45 @@ Page({
                   icon: 'success',
                   duration: 1000
                 });
+                that.onShow()
               }
             }
           )
         })
-    }
+      }
+    
     
   },
-  onShareAppMessage:function(res){
+  validator: function() {
+    return{
+      'missName':'走失对象姓名／名称',
+      'missDetailText': '详情描述',
+      'missAddressText' : '详细地址',
+      'missAddress' : '具体位置',
+      'contactName' : '联系人',
+      'contactTel' : '联系电话',
+    }
+  },
+  validateNoEmpty: function( data, validators ) {
+    for(let v in validators){
+      if(!data[v] || data[v].trim() == ''){
+        app.WxService.showToast({
+          title: '!  请填写' + validators[v],
+          icon: 'none',
+          duration: 3000
+        });
+        return false;
+      }
+    }
+    return true;
+  },
+  formReset(e) { 
+    console.log('重置！！')
+    this.setData({
+      chosen: ''
+    })
+  },
+  onShareAppMessage:function(res) {
     return {
       title: '寻找详情',
       path: '/pages/details/details?id='+this.data.id,

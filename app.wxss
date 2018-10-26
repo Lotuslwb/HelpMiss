@@ -5,17 +5,3 @@ page{
     font-size: 16px;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 }
-
-.weui-cell__bd{
-    overflow:hidden;
-}
-.navi-hover{
-    color: black;
-}
-.one-line{
-    overflow:hidden;
-    text-overflow:ellipsis;
-    -webkit-line-clamp:1;
-    white-space:nowrap;
-    width: 210px;
-}

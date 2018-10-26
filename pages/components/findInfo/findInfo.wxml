@@ -4,15 +4,15 @@
        <navigator url="/pages/detail/detail?id={{infoId}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"> 
        <!-- <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"> -->
             <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                <image class="weui-media-box__thumb" src="{{imagePath||''}}" />
+                <image class="weui-media-box__thumb" src="{{img|| defaultImg}}" />
             </view>
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                 <view class="weui-media-box__title weui-media-box__title_in-text">
-                    <view class="weui-media-box__info__meta">{{title||noData}}</view>
-                    <view class="weui-media-box__info  weui-media-box__info__meta_extra category" >{{category || '寻宠物'}}</view>
+                    <view class="weui-media-box__info__meta">{{title || noData}}</view>
+                    <view class="weui-media-box__info  weui-media-box__info__meta_extra category" >{{category || noData}}</view>
                 
                 </view>
-            <view class="weui-media-box__desc">{{preview||noData}}</view>
+            <view class="weui-media-box__desc">{{preview || noData}}</view>
             <view class="weui-media-box__info">
                 <view class="weui-media-box__info__meta one-line">丢失于 {{ address || noData }}</view>
             </view>

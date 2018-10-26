@@ -1,7 +1,16 @@
-# TalkTo
-有些话 我想对你说~~~（这只是项目名）
+# MissHelp
+帮走失
 
+# 目前遗留问题
 
+- queryHelpList有openId时返回的不对
+- 提交表单后重置无效
+- 数据存储：queryHelpList返回全部信息，但首页只展示部分，如果不全部存到gloabalData中，怎么在点击时获取当前_id的走失信息？
+
+## 已解决
+- 图片大小 aspectFit。
+- 电话链接。 
+- 校验： require项不为空，描述文字和图片长度。
 
 # 常用
 

@@ -5,12 +5,12 @@
 <view class="detail">
   
     <view class="page__bd">
-        <view class="weui-panel swiper-wrapper">
+        <view class="weui-panel swiper-wrapper" wx:if="{{picUrls && picUrls.length!=0}}">
             <swiper indicator-dots="true"
         autoplay="true"  interval="1500">
                 <block wx:for="{{picUrls}}" wx:key="{{index}}">
                     <swiper-item>
-                        <image src="{{item}}"/>
+                        <image mode = "aspectFit" src="{{item}}"/>
                     </swiper-item>
                 </block>
             </swiper> 
@@ -34,7 +34,7 @@
             <view class="detail-text-title">详情描述</view>
             <view class="detail-text">
                 <text>
-                    {{ missDetailText||'就是丢了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了了'}}
+                    {{ missDetailText||''}}
                 </text>
             </view>     
 
@@ -61,11 +61,11 @@
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">联系人</view>
-                <view class="weui-cell__ft">{{contactName || 'xxx'}}</view>
+                <view class="weui-cell__ft">{{contactName}}</view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">联系方式</view>
-                <view class="weui-cell__ft">{{contactTel || '14381438438'}}</view>
+                <view class="weui-cell__ft green" bindtap="call">{{contactTel}}</view>
             </view>
 
         </view>

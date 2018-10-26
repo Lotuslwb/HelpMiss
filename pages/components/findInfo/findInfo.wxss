@@ -13,5 +13,14 @@
     float: right;
 }
 
+.one-line{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:1;
+    white-space:nowrap;
+    width: 210px;
+}
+
+
 
 

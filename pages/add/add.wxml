@@ -2,7 +2,7 @@
 <view class="add">
   
     <view class="add-panel">
-        <form  bindsubmit="publish" bindreset="formReset">
+        <form  bindsubmit="publish" bindreset="formReset" catchreset="formReset">
             <view class="weui-cells__title">请填写走失对象信息</view>
         
             <view class="weui-cells weui-cells_after-title">
@@ -31,18 +31,23 @@
                 <view class="weui-cell weui-cell_switch">
                     <view class="weui-cell__bd">性别</view>
                     <view class="weui-cell__ft">
-                        {{sexArr[categoryIndex][0]}}<switch name="missSex" checked />{{sexArr[categoryIndex][1]}}
+                     <radio-group name="missSex">
+                            <label><radio value="{{sexArr[categoryIndex][0]}}"/>{{sexArr[categoryIndex][0]}}</label>
+                            <label><radio value="{{sexArr[categoryIndex][1]}}"/>{{sexArr[categoryIndex][1]}}</label>
+                        </radio-group>
+     
+                       
                     </view>
                 </view>
                 
         
-                <view class="weui-cell weui-cell_input">
-                    <view class="weui-cell__hd">
+                <view class="weui-cell weui-cell_select">
+                    <view class="weui-cell__hd weui-cell__hd_in-select-after">
                         <view class="weui-label">走失日期</view>
                     </view>
                     <view class="weui-cell__bd">
                         <picker name="missTime" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                            <view class="weui-input">{{date}}</view>
+                            <view class="weui-select weui-select_in-select-after">{{date}}</view>
                         </picker>
                     </view>
                 </view>
@@ -52,7 +57,7 @@
             <view class="weui-cells weui-cells_after-title">
                 <view class="weui-cell">
                     <view class="weui-cell__bd">
-                        <textarea name="missDetailText" maxlength="{{maxText}}" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+                        <textarea name="missDetailText" value="{{missDetailText}}" maxlength="{{maxText}}" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" bindinput="onDetailInput"  />
                         <view class="weui-textarea-counter" style="color:{{counterColor[missDetailText.length >= maxText]}}" >{{missDetailText.length}}/{{maxText}}</view>
                     </view>
                 </view>
@@ -136,6 +141,7 @@
 
             <view class="weui-btn-area">
                 <button formType="submit" class="weui-btn" type="primary">发布</button>
+                <button formType="reset" class="weui-btn" >Reset</button>
             </view>
         </form>
     </view>
