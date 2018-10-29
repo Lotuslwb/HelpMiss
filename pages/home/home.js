@@ -12,7 +12,13 @@ Page({
   onShow: function () {
  
   },
+  //下拉刷新
+  onPullDownRefresh: function(){
 
+    wx.reLaunch({
+      url:'home'
+    })
+  },
   onShareAppMessage:function(res){
     return {
       title: '首页',

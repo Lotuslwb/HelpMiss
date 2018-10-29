@@ -19,22 +19,23 @@ Component({
   },
 
   ready:function(){
-    console.log('>>>>')
-    console.log(this.data)
-    console.log('>>>>')
+    // console.log('>>>>')
+    // console.log(this.data)
+    // console.log('>>>>')
 
     const { createTime , picUrls , helpType } = this.data.info
     let formateTime = this.formatDateTime(parseInt(createTime))
     
-    let imgStr = picUrls && picUrls.length!=0 && picUrls[0];
+    let imgStr = picUrls && picUrls.length!=0 && picUrls[0] ||'';
+
     this.setData({
       publishTime: formateTime,
-      img: imgStr.split(',')[0]
+      img:  imgStr.split(',')[0] ||''
     })
  
     if(helpType){
       this.setData({
-        category: app.globalData.helpType[helpType]
+        category: app.globalData.helpType[helpType] || ''
       })
     }
   },
@@ -56,8 +57,6 @@ Component({
     },
 
     clickInfo() {
-      console.log('i want')
-      console.log(this.data.info)
 
       app.globalData.lostInfo = this.data.info
       wx.navigateTo({

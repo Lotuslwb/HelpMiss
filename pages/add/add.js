@@ -16,6 +16,7 @@ Page({
     missAddressText: '',
     missDetailText: '',
     counterColor:{ false:'#b2b2b2', true:'red' },
+    curDate:''
   },
   onLoad: function () {
      // 获取走失类型
@@ -35,7 +36,10 @@ Page({
         categories:app.globalData.helpType
       })
     }
-
+    //设置当前日期
+    this.setData({
+      curDate:this.getNowFormatDate()
+    })
   },
   onShow: function () {
  
@@ -49,6 +53,11 @@ Page({
   bindDateChange(e) {
     this.setData({
       date: e.detail.value
+    })
+  },
+  bindTimeChange(e) {
+    this.setData({
+      time: e.detail.value
     })
   },
   onDetailInput(e){
@@ -143,9 +152,22 @@ Page({
           missAddress,
           ...e.detail.value
       }
+      form.missTime = this.data.date && this.data.date + (form.missTime && (' ' + form.missTime) ||'');
+      console.log('>>>>>')
+      console.log(form)
+      console.log('>>>>>')
+      // return
       const validators = this.validator();
       //验证必需项是否为空
       if( !this.validateNoEmpty(form , validators)) return;
+      if( !this.validatePhone(form.contactTel)){
+        app.WxService.showToast({
+          title: validators['contactTel'] + '格式错误！',
+          icon: 'none',
+          duration: 3000
+        });
+        return;
+      }
       var that = this;
       app.WxService.getStorage({key:'openid'})
         .then((res)=>{
@@ -161,7 +183,8 @@ Page({
             res => {
               console.log(res)
               if(res.success == 0){
-                wx.redirectTo({
+                //关闭所有页面，以便跳转后重新加载
+                wx.reLaunch({
                   url:'add_success'
                 })
               }
@@ -181,18 +204,20 @@ Page({
   validator: function() {
     return{
       'missName':'走失对象姓名／名称',
+      'missTime' : '走失日期',
       'missDetailText': '详情描述',
-      'missAddressText' : '详细地址',
       'missAddress' : '具体位置',
+      'picUrls' : '图片',
       'contactName' : '联系人',
       'contactTel' : '联系电话',
     }
   },
   validateNoEmpty: function( data, validators ) {
     for(let v in validators){
-      if(!data[v] || data[v].trim() == ''){
+      if(!data[v] || typeof data[v] == 'string' && data[v].trim() == '' || data[v].length == 0){
         app.WxService.showToast({
-          title: '!  请填写' + validators[v],
+          title: v == 'missAddress'?'请获取' + validators[v] : v == 'picUrls'? '请上传图片':
+                  '!  请填写' + validators[v],
           icon: 'none',
           duration: 3000
         });
@@ -201,6 +226,27 @@ Page({
     }
     return true;
   },
+  validatePhone: function(phone) {  
+    let reg=/^[1][3,4,5,7,8][0-9]{9}$/;  
+    return reg.test(phone)? true : false;
+  },  
+
+  getNowFormatDate: function () {
+    var date = new Date();
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    return currentdate;
+  },
+
   onShareAppMessage:function(res) {
     return {
       title: '寻找详情',

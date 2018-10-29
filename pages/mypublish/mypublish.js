@@ -12,7 +12,7 @@ Page({
   onShow: function () {
  
   },
-
+  
   onShareAppMessage:function(res){
     return {
       title: '我的发布',

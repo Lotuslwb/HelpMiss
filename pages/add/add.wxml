@@ -33,21 +33,32 @@
                     <view class="weui-cell__ft">
                      <radio-group name="missSex">
                             <label><radio value="{{sexArr[categoryIndex][0]}}"/>{{sexArr[categoryIndex][0]}}</label>
+                            <text decode> &nbsp;</text>
                             <label><radio value="{{sexArr[categoryIndex][1]}}"/>{{sexArr[categoryIndex][1]}}</label>
                         </radio-group>
      
                        
                     </view>
-                </view>
-                
+                </view> 
         
                 <view class="weui-cell weui-cell_select">
                     <view class="weui-cell__hd weui-cell__hd_in-select-after">
                         <view class="weui-label">走失日期</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <picker name="missTime" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                        <picker mode="date" value="{{date}}" end="{{curDate}}"  bindchange="bindDateChange">
                             <view class="weui-select weui-select_in-select-after">{{date}}</view>
+                        </picker>
+                    </view>
+                </view>
+
+                  <view wx:if="{{date}}" class="weui-cell weui-cell_select" >
+                    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                        <view class="weui-label">走失时间</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <picker name="missTime" mode="time" value="{{time}}" bindchange="bindTimeChange">
+                            <view class="weui-select weui-select_in-select-after">{{time}}</view>
                         </picker>
                     </view>
                 </view>

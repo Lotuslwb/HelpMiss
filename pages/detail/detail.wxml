@@ -18,7 +18,7 @@
 
         <view class="weui-panel weui-panel_access">
             <view class="weui-panel__hd">
-                走失{{helpType == 0? '人':'宠物'||'未知'}}资料:
+                走失{{helpType == 0? '人':'宠物'||''}}资料:
             </view>
             <view class="weui-panel__bd">
                 <view class="weui-cell">
@@ -27,14 +27,14 @@
                 </view>
                 <view class="weui-cell">
                     <view class="weui-cell__bd">性别</view>
-                    <view class="weui-cell__ft">{{ missSex }}</view>
+                    <view class="weui-cell__ft">{{ missSex || noData }}</view>
                 </view>
             </view>
             <view class="weui-cell"></view>     
             <view class="detail-text-title">详情描述</view>
             <view class="detail-text">
                 <text>
-                    {{ missDetailText||''}}
+                    {{ missDetailText }}
                 </text>
             </view>     
 
@@ -44,7 +44,7 @@
             <view class="weui-panel__bd">
             <view class="weui-cell">
                 <view class="weui-cell__bd">走失地点</view>
-                <view class="weui-cell__ft">{{missAddressText||''}}</view>
+                <view class="weui-cell__ft">{{missAddressText }}</view>
             </view>
             </view>
             <view class="weui-panel__ft">
@@ -57,15 +57,15 @@
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">走失时间</view>
-                <view class="weui-cell__ft">{{lostTime || '2018-10-10 18:00'}}</view>
+                <view class="weui-cell__ft">{{ lostTime }}</view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">联系人</view>
-                <view class="weui-cell__ft">{{contactName}}</view>
+                <view class="weui-cell__ft">{{ contactName }}</view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">联系方式</view>
-                <view class="weui-cell__ft green" bindtap="call">{{contactTel}}</view>
+                <view class="weui-cell__ft green" bindtap="call">{{ contactTel }}</view>
             </view>
 
         </view>

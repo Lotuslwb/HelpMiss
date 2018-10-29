@@ -4,6 +4,7 @@ const app = getApp();
 
 Page({
   data: {
+    noData:'未知'
     
   },
   onLoad: function (option) {
@@ -17,13 +18,10 @@ Page({
       // 设置数据
       let picStr = info.picUrls && info.picUrls.length && info.picUrls[0];
       info.picUrls = picStr && picStr.split(',')
-      console.log(
-        info.picUrls
-      )
       this.setData(info)
-          console.log('>>>>')
-          console.log(this.data)
-          console.log('>>>>')
+          // console.log('>>>>')
+          // console.log(this.data)
+          // console.log('>>>>')
     }
   },
   // 从globalData中查询infoId

@@ -30,7 +30,7 @@ class HttpService extends WxRequest {
 				return Promise.reject(requestError)
 			},
 			response(response) {
-				console.log(response);
+				// console.log(response);
 				wx.hideLoading()
 				// if(response.statusCode === 401) {
 				//       wx.removeStorageSync('token')
