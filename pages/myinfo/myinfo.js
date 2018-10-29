@@ -13,4 +13,9 @@ Page({
   onShow: function () {
     
   },
+  openMypublish:function(){
+    wx.navigateTo({
+      url:'/pages/mypublish/mypublish'
+    })
+  }
 });

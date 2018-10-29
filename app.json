@@ -3,6 +3,7 @@
     "pages/home/home",
     "pages/myinfo/myinfo",
     "pages/add/add",
+    "pages/add/add_success",
     "pages/detail/detail",
     "pages/mypublish/mypublish"
   ],

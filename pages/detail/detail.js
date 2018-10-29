@@ -12,10 +12,10 @@ Page({
       id: option.id||' ',
     })
     //获取寻找信息的id
-    var info = this.findInfoById(option.id);
-    if(info && typeof info === 'object'){
+    var info =  app.globalData.lostInfo;
+    if(info &&  typeof info === 'object' && info._id == option.id){
       // 设置数据
-      let picStr = info.picUrls.length && info.picUrls[0];
+      let picStr = info.picUrls && info.picUrls.length && info.picUrls[0];
       info.picUrls = picStr && picStr.split(',')
       console.log(
         info.picUrls
@@ -27,10 +27,10 @@ Page({
     }
   },
   // 从globalData中查询infoId
-  findInfoById: function(id) {
+  // findInfoById: function(id) {
 
-    return app.globalData.lostInfos[id]
-  },
+  //   return app.globalData.lostInfos[id]
+  // },
   onShow: function () {
  
   },

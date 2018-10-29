@@ -33,11 +33,20 @@ App({
           }
           return openid;
         })
+      })
+      .catch(err => {
+        err => { 
+          app.WxService.showModal({
+            title:'登录失败',
+            content: err.errMsg || '',
+            showCancel: false
+          });
+        }
       });
   },
   globalData: {
     userInfo: null,
-    lostInfos: [],
+    lostInfo: {},
     helpType: []
   },
   renderImage(path) {

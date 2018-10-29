@@ -51,12 +51,6 @@ Page({
       date: e.detail.value
     })
   },
-  bindCountryChange(e) {
-    this.setData({
-      country: e.detail.value,
-      missAddressText: e.detail.value.join(''),
-    })
-  },
   onDetailInput(e){
     this.setData({
       missDetailText : e.detail.value,
@@ -92,10 +86,22 @@ Page({
           }
         }
       ).catch(
-        err => {console.log(err)}
+        err => { 
+          app.WxService.showModal({
+            title:'上传失败',
+            content: err.errMsg || '',
+            showCancel: false
+          });
+        }
       )
     }).catch(
-      err => {console.log(err)}
+      err => { 
+        app.WxService.showModal({
+          title:'选择图片失败',
+          content: err.errMsg || '',
+          showCancel: false
+        });
+      }
     )
   },
   previewImage: function(e) {
@@ -115,21 +121,21 @@ Page({
     //选择地址
     app.WxService.chooseLocation().then(
       res => {
-        console.log(res)
-        this.setData({
+        res.longitude && res.latitude && res.address && this.setData({
           missAddress: res.longitude + ',' + res.latitude,
           missAddressText : res.address,
           country :  res.address.split('区')[0] + '区' || res.address
         })
       }
     ).catch(
-      err => console.log(err)
+      err => app.WxService.showModal({
+        content: err.errMsg || '选择地址失败！',
+        showCancel: false
+      })
     )
   },
   // 发布
   publish: function(e){
-    console.log('发布')
-    
     const { picUrls , missAddress , sexArr , categoryIndex } = this.data
     if(e.detail.value){
       const form = {
@@ -150,20 +156,23 @@ Page({
             openId,
             ...form
           }  
-          console.log(data);
+     
           app.HttpService.publish(data).then(
             res => {
               console.log(res)
               if(res.success == 0){
-                app.WxService.showToast({
-                  title: res.data,
-                  icon: 'success',
-                  duration: 1000
-                });
-                that.onShow()
+                wx.redirectTo({
+                  url:'add_success'
+                })
               }
             }
-          )
+          ).catch(err => {          
+            app.WxService.showModal({
+              title:'发布失败',
+              content: err.errMsg || '',
+              showCancel: false
+            });
+          })
         })
       }
     
@@ -191,12 +200,6 @@ Page({
       }
     }
     return true;
-  },
-  formReset(e) { 
-    console.log('重置！！')
-    this.setData({
-      chosen: ''
-    })
   },
   onShareAppMessage:function(res) {
     return {

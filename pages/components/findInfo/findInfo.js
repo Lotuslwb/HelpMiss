@@ -5,15 +5,13 @@ Component({
     defaultImg: '/img/icon-myinfo.png',
     img:'',
     category:'',
+    publishTime:'',
   },
   properties: {
+    info:       Object,
     infoId:     String,
-    title:      String,
-    publisher:  String,
-    publishTime:String,
-    imagePath:  String,
-    preview:    String,
-    phone:      String,
+   
+  
     //
     helpType:   String,
     address:    String,
@@ -25,15 +23,18 @@ Component({
     console.log(this.data)
     console.log('>>>>')
 
-    let formateTime = this.formatDateTime(parseInt(this.data.publishTime))
+    const { createTime , picUrls , helpType } = this.data.info
+    let formateTime = this.formatDateTime(parseInt(createTime))
+    
+    let imgStr = picUrls && picUrls.length!=0 && picUrls[0];
     this.setData({
       publishTime: formateTime,
-      img: this.data.imagePath.split(',')[0]
+      img: imgStr.split(',')[0]
     })
  
-    if(this.data.helpType){
+    if(helpType){
       this.setData({
-        category: app.globalData.helpType[this.data.helpType]
+        category: app.globalData.helpType[helpType]
       })
     }
   },
@@ -53,5 +54,17 @@ Component({
       second = second < 10 ? ('0' + second) : second; 
       return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;  
     },
+
+    clickInfo() {
+      console.log('i want')
+      console.log(this.data.info)
+
+      app.globalData.lostInfo = this.data.info
+      wx.navigateTo({
+        url:'/pages/detail/detail?id='+ this.data.info._id
+      })
+      
+      
+    }
   }
 });

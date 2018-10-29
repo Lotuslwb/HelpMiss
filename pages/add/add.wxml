@@ -2,7 +2,7 @@
 <view class="add">
   
     <view class="add-panel">
-        <form  bindsubmit="publish" bindreset="formReset" catchreset="formReset">
+        <form  bindsubmit="publish" bindreset="formReset">
             <view class="weui-cells__title">请填写走失对象信息</view>
         
             <view class="weui-cells weui-cells_after-title">
@@ -71,14 +71,12 @@
                         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                     </view>
                 </view>
-                <view class="weui-cell weui-cell_select">
-                    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
                         <view class="weui-label">地区</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <picker  mode="region" bindchange="bindCountryChange" >
-                            <view class="weui-select weui-select_in-select-after">{{country}}</view>
-                        </picker>
+                        <view class="weui-input">{{country || '请获取具体位置'}}</view>
                     </view>
                 </view>
                 <view class="weui-cell weui-cell_input">
@@ -141,7 +139,6 @@
 
             <view class="weui-btn-area">
                 <button formType="submit" class="weui-btn" type="primary">发布</button>
-                <button formType="reset" class="weui-btn" >Reset</button>
             </view>
         </form>
     </view>
