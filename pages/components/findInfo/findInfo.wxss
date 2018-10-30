@@ -8,17 +8,29 @@
     border-radius: 10rpx;
 }
 
-.category{
-    margin-top: 10rpx;
-    float: right;
+.findInfo .category{
+    margin-top: 8rpx;
+    padding-bottom: 0;
+    height:1.5em;
+    line-height:1.5em;
 }
 
-.one-line{
+.findInfo .one-line{
     overflow:hidden;
     text-overflow:ellipsis;
     -webkit-line-clamp:1;
     white-space:nowrap;
+}
+.findInfo tail-msg{
     width: 210px;
+}
+.findInfo .leftPanel{
+    width: 30%;
+
+}
+.findInfo .title-wrapper{
+    width: 70%;
+    float: left;
 }
 
 

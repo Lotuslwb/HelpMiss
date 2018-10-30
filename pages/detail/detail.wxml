@@ -57,7 +57,7 @@
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">走失时间</view>
-                <view class="weui-cell__ft">{{ lostTime }}</view>
+                <view class="weui-cell__ft">{{ missTime }}</view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">联系人</view>

@@ -3,23 +3,25 @@
     <view class="weui-panel__bd">
      <!--   <navigator url="/pages/detail/detail?id={{infoId}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"> -->
        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" bindtap="clickInfo"> 
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                <image class="weui-media-box__thumb" src="{{img|| defaultImg}}" />
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg leftPanel">
+                <image class="weui-media-box__thumb" mode="aspectFill" src="{{img|| defaultImg}}" />
             </view>
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                 <view class="weui-media-box__title weui-media-box__title_in-text">
-                    <view class="weui-media-box__info__meta">
+                    <view class="weui-media-box__info__meta title-wrapper one-line">
                         <text decode="true" >{{info.missName}} &nbsp; {{info.missSex || ''}}</text>
                     </view>
-                    <view class="weui-media-box__info  weui-media-box__info__meta_extra category" >{{category || noData}}</view>
+                    <view class="weui-media-box__info  weui-media-box__info__meta_extra  category" >
+                        {{category || noData}}
+                    </view>
                 
                 </view>
             <view class="weui-media-box__desc">{{ info.missDetailText || noData}}</view>
             <view class="weui-media-box__info">
-                <view class="weui-media-box__info__meta one-line">丢失于 {{ info.missAddressText || noData }}</view>
+                <view class="weui-media-box__info__meta tail-msg one-line">走失于 {{ info.missAddressText || noData }}</view>
             </view>
             <view class="weui-media-box__info">
-                <view class="weui-media-box__info__meta"><text space="nbsp">{{ info.contactName|| noData}}  发布于  {{ publishTime || noData }} </text></view>
+                <view class="weui-media-box__info__meta tail-msg"><text space="nbsp">{{ info.contactName|| noData}}  发布于  {{ publishTime || noData }} </text></view>
             </view>
             </view>
         </view>
