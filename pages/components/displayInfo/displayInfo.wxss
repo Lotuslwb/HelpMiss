@@ -5,7 +5,16 @@
 }
 
 .display-info .title{
+    overflow:hidden;
     margin-top: 50rpx;
     text-align: center;
     color: #3cc51f;
+    font-size: 1.2em;
+}
+
+.selectBtn{
+    position:absolute;
+    font-size: 12px;
+    top: 50rpx;
+    right: 30rpx;
 }

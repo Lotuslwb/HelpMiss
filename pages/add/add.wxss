@@ -4,3 +4,10 @@
     margin:20rpx;
 
 }
+.add .one-line{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:1;
+    white-space:nowrap;
+    width: 440rpx;
+}

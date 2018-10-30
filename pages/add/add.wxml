@@ -87,7 +87,7 @@
                         <view class="weui-label">地区</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <view class="weui-input">{{country || '请获取具体位置'}}</view>
+                        <view class="weui-input one-line">{{country || '请获取具体位置'}}</view>
                     </view>
                 </view>
                 <view class="weui-cell weui-cell_input">
@@ -113,8 +113,14 @@
                         <view class="weui-uploader__bd ">
                             <view class="weui-uploader__files" id="uploaderFiles">
                                 <block wx:for="{{uploadImages}}" wx:key="*this">
-                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                    <view wx:if="{{uploadRes[index]}}" class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                        <image  class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                    </view>
+                                    <view wx:else class="weui-uploader__file weui-uploader__file_status">
                                         <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                        <view class="weui-uploader__file-content">
+                                            <icon type="warn" size="23" color="#F43530"></icon>
+                                        </view>
                                     </view>
                                 </block>
                             </view>
@@ -149,7 +155,7 @@
             
 
             <view class="weui-btn-area">
-                <button formType="submit" class="weui-btn" type="primary">发布</button>
+                <button formType="submit" class="weui-btn" disabled="{{pubDisable}}" type="primary">发布</button>
             </view>
         </form>
     </view>

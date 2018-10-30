@@ -16,12 +16,7 @@ Page({
     var info =  app.globalData.lostInfo;
     if(info &&  typeof info === 'object' && info._id == option.id){
       // 设置数据
-      let picStr = info.picUrls && info.picUrls.length && info.picUrls[0];
-      info.picUrls = picStr && picStr.split(',')
       this.setData(info)
-          // console.log('>>>>')
-          // console.log(this.data)
-          // console.log('>>>>')
     }
   },
   // 从globalData中查询infoId

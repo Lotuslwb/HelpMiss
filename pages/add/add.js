@@ -9,6 +9,7 @@ Page({
     sexArr:[['男','女'],['公','母']],
     nameLabel: ['姓名','名称'],
     uploadImages: [],
+    uploadRes:[],
     picUrls:[],
     maxImageNum:  9,  
     maxText: 200,
@@ -16,7 +17,8 @@ Page({
     missAddressText: '',
     missDetailText: '',
     counterColor:{ false:'#b2b2b2', true:'red' },
-    curDate:''
+    curDate:'',
+    pubDisable: false,
   },
   onLoad: function () {
      // 获取走失类型
@@ -69,40 +71,56 @@ Page({
   // 上传图片
   chooseImage: function (e) {
     var that = this;
-    
-    if(this.data.uploadImages.length >= this.data.maxImageNum) return;
+    const beforeLength = this.data.uploadImages.length;
+    if(beforeLength >= this.data.maxImageNum) return;
     app.WxService.chooseImage({
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        count:(9 - beforeLength)
     }).then(function (res) {
       // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-      that.setData({
-        uploadImages: that.data.uploadImages.concat(res.tempFilePaths)
-      });
-      
-      // var fomdata = new FormData()
-      app.WxService.uploadFile({
-        url: 'https://sg.eldesign.cn/helpmiss/upload',
-        filePath: res.tempFilePaths[0],
-        name:'file',   
-      }).then(
-        res => {
-          let data = JSON.parse(res.data);
-          if(data.success == 0){
-            that.setData({
-              picUrls: that.data.picUrls.concat(data.data)
-            })
-          }
-        }
-      ).catch(
-        err => { 
-          app.WxService.showModal({
-            title:'上传失败',
-            content: err.errMsg || '',
-            showCancel: false
-          });
-        }
+   
+      //将上传结果设置为false
+      let resArr = new Array()
+      res.tempFilePaths.forEach(
+        ( item , index )=>{  resArr[index] = false; }
       )
+      //保存上传图片本地路径和上传结果到data
+      that.setData({
+        uploadImages: that.data.uploadImages.concat(res.tempFilePaths),
+        uploadRes: that.data.uploadRes.concat(resArr)
+      });
+      //遍历上传图片到服务器
+      for(let i = 0; i < res.tempFilePaths.length ; i++){
+        app.WxService.uploadFile({
+          url: 'https://sg.eldesign.cn/helpmiss/upload',
+          filePath: res.tempFilePaths[i],
+          name:'file',   
+        }).then(
+          res => {
+            let data = JSON.parse(res.data);
+            if(data.success == 0){
+              //将上传结果修改为true
+              let tempArr = that.data.uploadRes.concat();
+              // tempArr[curFile] = true;
+              tempArr[beforeLength +i] = true;
+              that.setData({
+                picUrls: that.data.picUrls.concat(data.data), //保存图片真实地址
+                uploadRes: tempArr
+              })
+              console.log(that.data.picUrls)
+            }
+          }
+        ).catch(
+          err => { 
+            app.WxService.showModal({
+              title:'上传失败',
+              content: err.errMsg || '',
+              showCancel: false
+            });
+          }
+        )
+      }
     }).catch(
       err => { 
         app.WxService.showModal({
@@ -178,7 +196,11 @@ Page({
             openId,
             ...form
           }  
-     
+          // console.log(data)
+    
+          this.setData({
+            pubDisable: true,
+          })
           app.HttpService.publish(data).then(
             res => {
               if(res.success == 0){
@@ -206,6 +228,7 @@ Page({
       'missTime' : '走失日期',
       'missDetailText': '详情描述',
       'missAddress' : '具体位置',
+      'missAddressText' : '详细地址',
       'picUrls' : '图片',
       'contactName' : '联系人',
       'contactTel' : '联系电话',

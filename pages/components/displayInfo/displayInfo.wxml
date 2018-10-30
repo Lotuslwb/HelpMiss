@@ -3,8 +3,9 @@
 </view> -->
 
 <view class="display-info">
-        <view class="title">{{title[queryType]}}</view>
-        <block wx:for="{{infos}}" wx:key="{{item._id}}">
+        <view class="title">{{title[queryType]}}<button class="selectBtn" type="default" size="defaultSize" bindtap="selectType">{{selectedType}}</button></view>
+        
+        <block wx:for="{{filterInfos}}" wx:key="{{item._id}}">
             <findInfo info-id = "{{item._id}}" id = "{{item._id}}" 
                     info = "{{item}}"
                     />

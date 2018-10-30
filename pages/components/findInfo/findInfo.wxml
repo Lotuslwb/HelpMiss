@@ -1,10 +1,9 @@
 <view class="findInfo">
-        
     <view class="weui-panel__bd">
      <!--   <navigator url="/pages/detail/detail?id={{infoId}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"> -->
        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" bindtap="clickInfo"> 
             <view class="weui-media-box__hd weui-media-box__hd_in-appmsg leftPanel">
-                <image class="weui-media-box__thumb" mode="aspectFill" src="{{img|| defaultImg}}" />
+                <image class="weui-media-box__thumb" mode="aspectFill" src="{{info.picUrls[0]|| defaultImg}}" />
             </view>
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                 <view class="weui-media-box__title weui-media-box__title_in-text">
@@ -12,7 +11,7 @@
                         <text decode="true" >{{info.missName}} &nbsp; {{info.missSex || ''}}</text>
                     </view>
                     <view class="weui-media-box__info  weui-media-box__info__meta_extra  category" >
-                        {{category || noData}}
+                        {{categories[info.helpType] || noData}}
                     </view>
                 
                 </view>
@@ -22,7 +21,7 @@
             </view>
             <view class="weui-media-box__info ">
                 <view class="weui-media-box__info__meta publisher one-line"><text>{{ info.contactName|| noData}} </text></view>
-                <view class="weui-media-box__info__meta" style="float:right"><text space="nbsp">发布于  {{ publishTime || noData }} </text></view>
+                <view class="weui-media-box__info__meta" style="float:right"><text space="nbsp">发布于  {{ info.publishTime || noData }} </text></view>
             </view>
            
             </view>
