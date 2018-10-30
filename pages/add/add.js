@@ -163,6 +163,9 @@ Page({
   },
   // 发布
   publish: function(e){
+    this.setData({
+      pubDisable: true,
+    })
     const { picUrls , missAddress , sexArr , categoryIndex } = this.data
     if(e.detail.value){
       const form = {
@@ -177,13 +180,21 @@ Page({
       // return
       const validators = this.validator();
       //验证必需项是否为空
-      if( !this.validateNoEmpty(form , validators)) return;
+      if( !this.validateNoEmpty(form , validators)){
+        this.setData({
+          pubDisable: false,
+        })
+        return;
+      }
       if( !this.validatePhone(form.contactTel)){
         app.WxService.showToast({
           title: validators['contactTel'] + '格式错误！',
           icon: 'none',
           duration: 3000
         });
+        this.setData({
+          pubDisable: false,
+        })
         return;
       }
       var that = this;
@@ -198,9 +209,7 @@ Page({
           }  
           // console.log(data)
     
-          this.setData({
-            pubDisable: true,
-          })
+          
           app.HttpService.publish(data).then(
             res => {
               if(res.success == 0){
@@ -210,7 +219,10 @@ Page({
                 })
               }
             }
-          ).catch(err => {          
+          ).catch(err => {    
+            this.setData({
+              pubDisable: false,
+            })      
             app.WxService.showModal({
               title:'发布失败',
               content: err.errMsg || '',
