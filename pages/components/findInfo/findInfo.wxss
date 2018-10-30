@@ -4,15 +4,17 @@
     border: 1px solid #d3d3d3;
     box-shadow: 1px 1px 10px #d3d3d3;
     background-color: white;
-    margin: 40rpx 20rpx;
+    margin: 40rpx 15rpx;
     border-radius: 10rpx;
 }
 
 .findInfo .category{
+    float: right;
     margin-top: 8rpx;
     padding-bottom: 0;
     height:1.5em;
     line-height:1.5em;
+    font-size: 26rpx;
 }
 
 .findInfo .one-line{
@@ -21,15 +23,16 @@
     -webkit-line-clamp:1;
     white-space:nowrap;
 }
-.findInfo tail-msg{
-    width: 210px;
+.findInfo .tail-msg{
+    width: 400rpx;
 }
 .findInfo .leftPanel{
-    width: 30%;
+    width: 200rpx;
+    height: 200rpx;
 
 }
 .findInfo .title-wrapper{
-    width: 70%;
+    width: 60%;
     float: left;
 }
 
