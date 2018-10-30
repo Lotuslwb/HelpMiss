@@ -17,7 +17,6 @@ App({
   login() {
     return this.WxService.login()
       .then(data => {
-        console.log(data.code)
         return this.HttpService.onLogin({
           code: data.code
         })

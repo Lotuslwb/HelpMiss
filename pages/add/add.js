@@ -153,9 +153,9 @@ Page({
           ...e.detail.value
       }
       form.missTime = this.data.date && this.data.date + (form.missTime && (' ' + form.missTime) ||'');
-      console.log('>>>>>')
-      console.log(form)
-      console.log('>>>>>')
+      // console.log('>>>>>')
+      // console.log(form)
+      // console.log('>>>>>')
       // return
       const validators = this.validator();
       //验证必需项是否为空
@@ -181,7 +181,6 @@ Page({
      
           app.HttpService.publish(data).then(
             res => {
-              console.log(res)
               if(res.success == 0){
                 //关闭所有页面，以便跳转后重新加载
                 wx.reLaunch({
