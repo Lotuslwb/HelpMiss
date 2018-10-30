@@ -20,12 +20,11 @@
             <view class="weui-media-box__info">
                 <view class="weui-media-box__info__meta tail-msg one-line">走失于 {{ info.missAddressText || noData }}</view>
             </view>
-            <view class="weui-media-box__info">
-                <view class="weui-media-box__info__meta tail-msg one-line"><text space="nbsp">发布人： {{ info.contactName|| noData}}</text></view>
+            <view class="weui-media-box__info ">
+                <view class="weui-media-box__info__meta publisher one-line"><text>{{ info.contactName|| noData}} </text></view>
+                <view class="weui-media-box__info__meta" style="float:right"><text space="nbsp">发布于  {{ publishTime || noData }} </text></view>
             </view>
-            <view class="weui-media-box__info">
-                <view class="weui-media-box__info__meta tail-msg one-line"><text space="nbsp">发布于 {{ publishTime || noData }} </text></view>
-            </view>
+           
             </view>
         </view>
         <!-- </navigator> --> 

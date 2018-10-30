@@ -134,7 +134,7 @@
                         <view class="weui-label">联系人</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input name="contactName" class="weui-input" placeholder="请输入联系人姓名"/>
+                        <input name="contactName" maxlength="10" class="weui-input" placeholder="请输入联系人姓名"/>
                     </view>
                 </view>
                 <view class="weui-cell weui-cell_input">
