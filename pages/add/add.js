@@ -108,7 +108,7 @@ Page({
                 picUrls: that.data.picUrls.concat(data.data), //保存图片真实地址
                 uploadRes: tempArr
               })
-              console.log(that.data.picUrls)
+              // console.log(that.data.picUrls)
             }
           }
         ).catch(

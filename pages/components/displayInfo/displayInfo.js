@@ -79,14 +79,14 @@ Component({
             })
             if(res.tapIndex){
               let tmp = this.data.infos.filter((item) => {
-                console.log(item.helpType )
-                console.log(item.helpType && item.helpType == res.tapIndex -1 )
+                  // console.log(item.helpType )
+                  // console.log(item.helpType && item.helpType == res.tapIndex -1 )
                 return (item.helpType === (res.tapIndex -1)+'' )
               })
               this.setData({
                 filterInfos: tmp,
               })
-              console.log(tmp)
+              // console.log(tmp)
             }else{
               //全部
               this.setData({
