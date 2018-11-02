@@ -4,10 +4,17 @@
 
 <view class="display-info">
         <view class="title">{{title[queryType]}}<button class="selectBtn" type="default" size="defaultSize" bindtap="selectType">{{selectedType}}</button></view>
-        
+    
         <block wx:for="{{filterInfos}}" wx:key="{{item._id}}">
             <findInfo info-id = "{{item._id}}" id = "{{item._id}}" 
                     info = "{{item}}"
                     />
         </block>
+        <view wx-if="{{!loaded}}" class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view wx:if="{{!filterInfos || !filterInfos.length}}" class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line bgcolor">暂无数据</view>
+        </view>
 </view>
